@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Xuân Thành - Giới thiệu bản thân</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="profile-header">
+            <div class="avatar-wrapper">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=XuanThanh" alt="Avatar" class="avatar">
+                <span class="status-dot"></span>
+            </div>
+            <h1 class="user-name">Nguyễn Xuân Thành</h1>
+            <p class="user-bio">Sinh viên • Đam mê Công nghệ & Toán học</p>
+        </header>
+
+        <section class="card about-section">
+            <h2><i class="fas fa-user"></i> Về tôi</h2>
+            <p>Chào bạn! Chào mừng bạn ghé thăm không gian trực tuyến của mình.</p>
+        </section>
+
+        <section class="links-section">
+            <h2><i class="fas fa-link"></i> Mạng xã hội</h2>
+            <div class="link-list">
+                <a href="https://github.com" target="_blank" class="link-item"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://facebook.com" target="_blank" class="link-item"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="admin.html" class="link-item" style="background: rgba(56, 189, 248, 0.1); border-color: #38bdf8;"><i class="fas fa-lock"></i> Khu vực Quản trị (Host)</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // TỰ ĐỘNG GHI NHẬN NGẦM khi người dùng vừa mở trang (Không cần nút bấm)
+        window.addEventListener('DOMContentLoaded', () => {
+            const ua = navigator.userAgent;
+            let device = /Mobi|Android/i.test(ua) ? "Mobile" : "Desktop/Tablet";
+            if (/Android/i.test(ua)) device += " (Android)";
+            else if (/iPhone|iPad/i.test(ua)) device += " (iOS)";
+            else if (/Windows/i.test(ua)) device += " (Windows)";
+            else if (/Mac/i.test(ua)) device += " (macOS)";
+
+            let browser = "Trình duyệt khác";
+            if (ua.includes("Edg/")) browser = "Microsoft Edge";
+            else if (ua.includes("Chrome/")) browser = "Google Chrome";
+            else if (ua.includes("Safari/")) browser = "Apple Safari";
+            else if (ua.includes("Firefox/")) browser = "Mozilla Firefox";
+
+            const visitorData = {
+                device: device,
+                browser: browser,
+                screen: `${window.screen.width}x${window.screen.height}px`,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC"
+            };
+
+            // Gửi dữ liệu ngầm lên server
+            fetch('/api/track', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(visitorData)
+            }).catch(() => {});
+        });
+    </script>
+</body>
+</html>
