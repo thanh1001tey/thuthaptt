@@ -90,7 +90,7 @@ app.post('/api/logout', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server đang chạy tại cổng ${PORT}`);
-=======
+
 const express = require('express');
 const session = require('express-session');
 const fs = require('fs');
@@ -182,5 +182,5 @@ app.post('/api/logout', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server đang chạy tại cổng ${PORT}`);
->>>>>>> a29350961fd2da1501bc33f7c09fe8a1f0b5f7dc
+ a29350961fd2da1501bc33f7c09fe8a1f0b5f7dc
 });
